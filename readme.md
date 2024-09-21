@@ -29,9 +29,13 @@ It is built around **one goal** : making it easy to add new variables and modali
 
 - main.py is the main backtesting file: 
   it can either test three specific modalities by applying a filter on variables (e.g. [relative_volume > 2] + [breakout_7d = True] + [h1_chg_rank = High] ) or it can run a (shuffled) grid search on all the modalities (which represents millions of strategies).
+  
   it accepts mandatory modalities : modalities that would apply to all the strategies tested, particularly usefull to test one specific condition in different environments
+  
   strategies can be tested in R factors or in %
+  
   strategies are also based on different TP and SL conditions (detailed below)
+  
   results are then stored in a csv with detail of the strategy (entry variables, entry type, sl strat, tp strat) and its results: number of trades taken by the strategy,performance (%), avg_perf (%), win_rate (%) => other metrics are available (see metrics.py)
 
 - knife_graber.py is a backtest of a strategy consisting in "grabing knives" : in other words, placing orders far from the market price every hour in case a big flush happens (and rotate those orders every hour). The goal is to identify what would be the optimal size, timeframe and distance from market price in order to profit from such a strategy. 
@@ -39,6 +43,7 @@ It is built around **one goal** : making it easy to add new variables and modali
 - display_strats.py takes the best strategies identified by main.py and dislay the trades that would have been taken with it as well as their TP and SL. It lets evaluate visually whether the strategies are overfitted and the result of pure luck or not (for example if SL were very close many times but not triggered or if TP was just touched).
 
 - metrics.py contains multiple metrics for evaluating a strategy : log return, cagr, win rate, max drawdown, max consecutives losses, sharpe, percent return, years past, annualized volatility, sharpe ratio, rolling sharpe ratio, annualized downside deviation, sortino ratio, pure profit score, jensens alpha, jensens alpha v2, drawdown series, max drawdown, max drawdown with metadata, log max drawdown ratio, calmar ratio
+
   => need some small adjustments to be implemented within main.py
 
 ### notebooks

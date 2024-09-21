@@ -1,27 +1,33 @@
 # Crypto framework
 
+## Definition
+**Variable**: a parameter within a strategy (e.g. day of the week, daily dollar volume, 1-hour-change % etc.) => the full list is given below
+**Modality**: a specific filter applied to a variable. For example: day of the week = Monday; daily dollar volume > 1b USD; 1-hour-change % > 5%
+Please note that within code, modalities are called *conditions*. 
+
 ## Description
-This project aims at simulating as many 3-condition-strategies as possible in order to retrieve the most profitable conditions.
-**The idea is not to overfit to the best strategy but rather to find the most common conditions amongst the top strategies.**
+This project aims at simulating as many 3-modality-strategies as possible in order to retrieve the most profitable variables.
 
-It is built around **one goal** : making it easy to add new conditions and test them with existing conditions.
+**The idea is not to overfit to the best strategy but rather to find the most common variables / modalities amongst the top strategies.**
 
-*It's basically a grid search applied to (sometimes) complex conditions*
+It is built around **one goal** : making it easy to add new variables and modalities, and test them with existing modalities.
+
+*It's basically a grid search applied to many (sometimes complex) modalities*
 
 ## Architecture
 ### collect 
 *This folder aims at preparing data for backtesting by: retrieving, storing data and calculating indicators*
 
 - get_date.py retrieves raw data from coinalyze (liquidations, OI, fundings, longs) and ohlc from binance (tf: 1h, 5m)
-- main.py calculates the indicators / conditions (detailed below)
+- main.py calculates the indicators / modalities (detailed below)
 - order_book.py is currently running on GCP and storing snapshops of orderbooks in BigQuery every 5 min for later analysis regarding order book 
 
 ### backtest
 *This folder provides algorithms that backtest strategies*
 
 - main.py is the main backtesting file: 
-  it can either test three specific conditions by applying a filter on variables (e.g. [relative_volume > 2] + [breakout_7d = True] + [h1_chg_rank = High] ) or it can run a (shuffled) grid search on all the conditions written in the conditions object (which represents millions of strategies).
-  it accepts mandatory conditions : conditions that would apply to all the strategies tested, particularly usefull to test one specific condition in different environments
+  it can either test three specific modalities by applying a filter on variables (e.g. [relative_volume > 2] + [breakout_7d = True] + [h1_chg_rank = High] ) or it can run a (shuffled) grid search on all the modalities (which represents millions of strategies).
+  it accepts mandatory modalities : modalities that would apply to all the strategies tested, particularly usefull to test one specific condition in different environments
   strategies can be tested in R factors or in %
   strategies are also based on different TP and SL conditions (detailed below)
   results are then stored in a csv with detail of the strategy (entry variables, entry type, sl strat, tp strat) and its results: number of trades taken by the strategy,performance (%), avg_perf (%), win_rate (%) => other metrics are available (see metrics.py)

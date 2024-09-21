@@ -1,0 +1,73 @@
+Meilleurs facteurs : 
+relative volume > 3
+week_end = False 
+long_% < 60
+
+
+
+KNIFE GRABER :
+- MEP
+- analyse en h2, h4
+
+BREAKOUT : 
+- borrowing rates
+
+- order book (cf tradinglite ou coinglass)
+- OI / volume
+- fear & greed
+- breakout (hors wick)
+- regarder en lower timeframe s'il y a pas un pattern lors des breakouts (green candle? big wick? high volume?)
+
+max drawdown avec perf à j+1, j+3...
+
+- SL à BE après ... (5 bars, TP1 etc)
+- évolution du SL (2 sigma réupdated à chaque période)
+
+
+données intéressantes:
+- asymétrie de distance bid / ask (je bouge beaucoup plus le marché avec 1m à la vente, qu'à la baisse)
+
+regarder aussi l'éxécution des ordres :
+- quand il y a des gros ordres qui grignottent l'order book
+
+Rapport entre le volume et la hausse de l'open interest : gros volume + baisse de l'oi = rekt 
+
+que se passe-t-il si breakout et close above previous high
+-> que se passe-t-il ensuite si on retrace la moitié de la candle qui a breakout? 
+
+quid d'un high liquidation quand small move (beaucoup de gens dans un sens avec des stops serrés)
+
+type d'inputs:
+- en hausse,
+- élevé overall
+- élevé sur 24h,
+- élevé sur 7j,
+- élevé sur 30j,
+
+perf par heure (notamment à 23h et minuit)
+
+faire les autres coins
+
+prochaine grosse step : 
+framework low cap => trouver des patterns (momo?) sur un maximum de coins
+
+green_candle_in_a_row
+red_candle_in_a_row
+three soldiers
+IV
+red_days
+green_days
+
+
+exit : trendfollowing = under SMA
+
+entry: first candle to make a new high 
+exit : first candle to make a new low
+=> avoir une variable : in_trade = True 
+
+
+
+
+
+
+cd desktop/data_analysis/crypto_framework/backtest && activate py38 && python main.py

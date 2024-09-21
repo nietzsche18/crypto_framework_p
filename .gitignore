@@ -1,0 +1,7 @@
+backtest/data/
+collect/data/
+collect/btc_fulldata.csv
+collect/credentials.json
+collect/.env
+infos.xlsx
+trading/

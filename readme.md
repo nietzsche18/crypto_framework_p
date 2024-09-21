@@ -2,7 +2,9 @@
 
 ## Definition
 **Variable**: a parameter within a strategy (e.g. day of the week, daily dollar volume, 1-hour-change % etc.) => the full list is given below
+
 **Modality**: a specific filter applied to a variable. For example: day of the week = Monday; daily dollar volume > 1b USD; 1-hour-change % > 5%
+
 Please note that within code, modalities are called *conditions*. 
 
 ## Description
